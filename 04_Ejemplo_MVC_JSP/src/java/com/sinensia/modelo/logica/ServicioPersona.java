@@ -28,7 +28,7 @@ public class ServicioPersona {
     
     private ArrayList<Persona> personas;
     
-    public Persona addPersonas(String nombre, String edad)
+    public Persona addPersonas(String nombre, String edad, String correo, String password)
         throws NumberFormatException, IOException, IllegalArgumentException {
         
         if (nombre.equals("")) {
@@ -42,7 +42,7 @@ public class ServicioPersona {
             if (intEdad <= 12 ) {
                  throw new IllegalArgumentException("La edad debe ser mayor que 12");
             } else {
-                Persona p = new Persona(nombre, intEdad);
+                Persona p = new Persona(nombre, intEdad, correo, password);
                 personas.add(p);
                 return p;
             }

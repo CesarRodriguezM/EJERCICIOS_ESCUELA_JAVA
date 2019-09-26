@@ -12,12 +12,14 @@ package com.sinensia.modelo;
  */
 public class Persona {
     
-    private String nombre;
+    private String nombre, correo, password;
     private int edad;
 
-    public Persona(String nombre, int edad) {
+    public Persona(String nombre, int edad, String correo, String password) {
         this.nombre = nombre;
         this.edad = edad;
+        this.correo=correo;
+        this.password=password;
     }
 
     public String getNombre() {
@@ -28,7 +30,6 @@ public class Persona {
         this.nombre = nombre;
     }
 
-
     public int getEdad() {
         return edad;
     }
@@ -37,4 +38,22 @@ public class Persona {
         this.edad = edad;
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    
+    
 }
