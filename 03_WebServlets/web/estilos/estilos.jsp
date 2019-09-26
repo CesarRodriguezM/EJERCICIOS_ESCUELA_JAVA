@@ -5,9 +5,10 @@
 --%>
 
 <%@page contentType="text/css" pageEncoding="UTF-8"%>
-.menu-principal{
+
+.menu-princip {
     display: inline-block;
-    border:2px solid green;
+    border: 2px solid green;
     margin: 3px;
 }
 

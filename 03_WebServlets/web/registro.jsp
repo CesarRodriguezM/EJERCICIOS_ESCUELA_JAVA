@@ -1,22 +1,10 @@
-<%-- 
-    Document   : registro
-    Created on : 26-sep-2019, 10:25:19
-    Author     : SINENSIA01
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@include file="head.jsp" %>
+<!DOCTYPE html>
+<%-- Pagina de inicio usando includes y funciones --%>
 <html>
-  <head>
-        <title>Registro</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <link rel="stylesheet" href="./estilos/estilos.jsp"/>
-    </head>
+    <%= head("Registro") %>
     <body>
-         <%@include file="header.jsp" %>
-        <div>TODO write content</div>
-
+        <%@include file="header.jsp" %>
         <form name='form1' method='post' action='./param.jsp'>            
             <table border='1'>
                 <tr><td>Nombre:</td>  
@@ -26,5 +14,6 @@
             </table>
             <input type='submit' value='Enviar'/>             
         </form>
+
     </body>
 </html>

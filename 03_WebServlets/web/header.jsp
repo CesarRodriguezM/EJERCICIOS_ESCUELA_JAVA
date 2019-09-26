@@ -1,17 +1,17 @@
 <%-- 
-    Document   : header
-    Created on : 26-sep-2019, 10:09:23
-    Author     : SINENSIA01
+    Document   : barra_nav
+    Created on : 26-sep-2019, 10:08:24
+    Author     : alumno
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-
+<%-- Irá dentro del body --%>
 <header>
-    <h1>Proyecto 03_WebServlets</h1>
+    <h1>Proyecto 03_WebServlets</h1>    
 </header>
-<nav>
-    <div class="menu-principal"><a href="./hola">Hola servlet</a></div>
-    <div class="menu-principal"><a href="./param">Servlet Form que recibe parametros (form)</a></div>
-    <div class="menu-principal"><a href="./registro.jsp">Formulario registro</a></div>
+<nav>    
+    <div class="menu-princip"><a href="./">Inicio</a></div>
+    <div class="menu-princip"><a href="./hola">Hola servlet</a></div>
+    <div class="menu-princip"><a href="./param">ServletParam</a></div>
+    <div class="menu-princip"><a href="./registro.jsp">Form Registro</a></div>
 </nav>

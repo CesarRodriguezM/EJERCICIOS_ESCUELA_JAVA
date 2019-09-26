@@ -1,20 +1,10 @@
-<%-- 
-    Document   : param
-    Created on : 25-sep-2019, 17:36:50
-    Author     : alumno
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="head.jsp" %>
 <!DOCTYPE html>
+<%-- Pagina de inicio usando includes y funciones --%>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Datos introducidos</title>
-        <link rel="stylesheet" href="./estilos/estilos.jsp"/>
-    </head>
+    <%= head("Parametros") %>
     <body>
         <%@include file="header.jsp" %>
-     
         <h1>Datos</h1>
         <p>Te llamas <%  out.println(request.getParameter("nombre")); %> </p>
         <p>Y tienes <% out.println( request.getParameter("edad")); %> </p>
