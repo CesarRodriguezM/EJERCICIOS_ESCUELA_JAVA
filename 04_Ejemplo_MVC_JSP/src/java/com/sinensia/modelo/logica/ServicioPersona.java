@@ -77,7 +77,7 @@ public class ServicioPersona {
         Persona p = null;
         int i = 0;
         for (Persona persona : personas) {
-            if (persona.getNombre().equals(id) && persona.getCorreo().equalsIgnoreCase(correo)) {
+            if (persona.getNombre().equals(id)) {
                 p = persona;
                 break;
             }

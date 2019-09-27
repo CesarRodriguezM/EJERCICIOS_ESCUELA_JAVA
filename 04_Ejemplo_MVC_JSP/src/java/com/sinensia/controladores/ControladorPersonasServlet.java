@@ -8,7 +8,6 @@ package com.sinensia.controladores;
 import com.sinensia.modelo.Persona;
 import com.sinensia.modelo.logica.ServicioPersona;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -55,8 +54,7 @@ public class ControladorPersonasServlet extends HttpServlet {
             else
                 p = ServicioPersona.getInstancia().modificarPersonas(nombre, edad, correo, password, persona);
             
-            request.getSession().setAttribute("resultadoBusq",p);
-            
+            request.getSession().setAttribute("resultadoBusq",p);            
             if (p == null) {
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             } else {
