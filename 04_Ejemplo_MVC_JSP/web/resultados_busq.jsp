@@ -28,7 +28,8 @@
             <label for="pass">Contraseña </label>
             <input type='password' name='pass' id="pass" value="<%= pers.getPassword()%>"/>
             <input type='hidden' name='persona' id='persona' value='<%= pers.toString()%>'/>
-            <input type='submit' value='Modificar'/>
+            <input type='submit' name="boton" value='Modificar'/>
+            <input type='submit' name="boton" value='Eliminar'/>	
         </form>
         <% } else { %>            
                 <span style="color: red">

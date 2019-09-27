@@ -92,12 +92,29 @@ public class ServicioPersona {
         }
         return p;
     }
+	
+    public boolean deletePersonas(String nombre, String edad, String correo, String password)
+        throws NumberFormatException, IOException, IllegalArgumentException {
+            
+        Persona perElim = null;
+        for (Persona p : personas) {
+            if (p.getNombre().equalsIgnoreCase(nombre)) {
+                perElim = p;
+            }
+        }
+        if (perElim == null) {
+            return false;
+        } else {
+            personas.remove(perElim);
+            return true;
+        }
+    }
 
     public List<Persona> damePersonas(String nombre) {
         List<Persona> pers = new ArrayList<>();
-        for(Persona p:personas)
+        for(Persona p:personas)								
             if(p.getNombre().equalsIgnoreCase(nombre))
-                pers.add(p);
+                pers.add(p);							 
         return pers;
     }
 }

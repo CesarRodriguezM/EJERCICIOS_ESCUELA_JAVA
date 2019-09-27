@@ -47,19 +47,30 @@ public class ControladorPersonasServlet extends HttpServlet {
         String password = request.getParameter("pass"); 
         String persona = request.getParameter("persona");
                 
+        String btnEliminar = request.getParameter("boton");
+        boolean eliminarPers;
         try {
             Persona p = new Persona();
+
             if( persona.equals(""))
-                p = ServicioPersona.getInstancia().addPersonas(nombre, edad, correo, password);
-            else
-                p = ServicioPersona.getInstancia().modificarPersonas(nombre, edad, correo, password, persona);
-            
+                p = ServicioPersona.getInstancia().addPersonas(nombre, edad, correo, password);																			
+            else{
+                if (btnEliminar.equalsIgnoreCase("eliminar")) {
+                    eliminarPers = ServicioPersona.getInstancia().deletePersonas(nombre, edad, correo, password);
+                    request.getRequestDispatcher("usuarioEliminado.jsp").forward(request, response);
+                } else {
+                    p = ServicioPersona.getInstancia().modificarPersonas(nombre, edad, correo, password, persona);
+                    request.getRequestDispatcher("exito.jsp").forward(request, response);
+                }
+            }
             request.getSession().setAttribute("resultadoBusq",p);            
+
             if (p == null) {
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             } else {
                  request.getRequestDispatcher("exito.jsp").forward(request, response);          
             }
+		  
         } catch (NumberFormatException ex) {
             request.getSession().setAttribute("mensajeError", "Error numérico: " + ex.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
@@ -70,6 +81,7 @@ public class ControladorPersonasServlet extends HttpServlet {
             request.getSession().setAttribute("mensajeError", "Error genérico: " + ex.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);            
         }
+
     }
 
     /**
