@@ -26,10 +26,22 @@
         <form name='formBusq' method='get' action='./personas.do'>            
             <table border='1'>
                 <tr><td>Nombre:</td>  
-                    <td><input type='text' name='nombre' id='nombre'/></td>
-                    <td><input type='submit' value='Buscar'/>  </td></tr>
-            </table>                       
+                    <td><input type='text' name='nombre' id='nombre'/></td></tr>
+                <tr><td>Correo:</td>  
+                    <td><input type='email' name='correo' id='correo'/></td></tr>     
+                <input type='hidden' name='metodo' id='persona' value='simple'/>
+            </table> 
+            <input type='submit' value='Buscar'/>
         </form>
         
+        <h2>Buscar varias personas</h2>
+        <form name='formBusqVarios' method='get' action='./personas.do'>            
+            <table border='1'>
+                <tr><td>Nombre:</td>  
+                    <td><input type='text' name='nombre' id='nombre'/></td>
+                    <td><input type='submit' value='Buscar'/>  </td></tr>    
+                    <input type='hidden' name='metodo' id='persona' value='multiple'/>
+            </table>                       
+        </form>        
     </body>
 </html>

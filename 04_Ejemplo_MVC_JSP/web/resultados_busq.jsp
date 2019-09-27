@@ -17,6 +17,7 @@
         <h2>Usuario</h2>
         <% Persona pers = (Persona) session.getAttribute("resultadoBusq"); %>
         <% if (pers != null) { %>
+        <h2>BUSCAR Y MODIFICAR</h2>
         <form name='form1' method='post' action='./personas.do'>            
             <label for="nombre">Nombre: </label>
             <input type='text' name='nombre' id="nombre" value="<%= pers.getNombre() %>"/>

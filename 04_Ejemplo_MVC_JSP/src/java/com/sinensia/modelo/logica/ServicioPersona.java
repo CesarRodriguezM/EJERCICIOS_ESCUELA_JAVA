@@ -8,6 +8,7 @@ package com.sinensia.modelo.logica;
 import com.sinensia.modelo.Persona;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Singleton porque sólo queremos un servicio por aplicación/servidor
@@ -61,13 +62,22 @@ public class ServicioPersona {
         }
         return null;
     }
+    
+    public Persona getPersona(String nombre, String email) {
+        for (Persona p : personas) {
+            if (p.getNombre().equalsIgnoreCase(nombre) && p.getCorreo().equalsIgnoreCase(email)) {
+                return p;
+            }
+        }
+        return null;
+    }
 
     public Persona modificarPersonas(String nombre, String edad, String correo, String password, String id) {
 
         Persona p = null;
         int i = 0;
         for (Persona persona : personas) {
-            if (persona.getNombre().equals(id)) {
+            if (persona.getNombre().equals(id) && persona.getCorreo().equalsIgnoreCase(correo)) {
                 p = persona;
                 break;
             }
@@ -81,5 +91,13 @@ public class ServicioPersona {
             personas.set(i, p);
         }
         return p;
+    }
+
+    public List<Persona> damePersonas(String nombre) {
+        List<Persona> pers = new ArrayList<>();
+        for(Persona p:personas)
+            if(p.getNombre().equalsIgnoreCase(nombre))
+                pers.add(p);
+        return pers;
     }
 }

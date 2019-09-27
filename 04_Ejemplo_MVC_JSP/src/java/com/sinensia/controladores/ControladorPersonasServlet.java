@@ -9,6 +9,7 @@ import com.sinensia.modelo.Persona;
 import com.sinensia.modelo.logica.ServicioPersona;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,11 +25,17 @@ public class ControladorPersonasServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String nombre = request.getParameter("nombre"); // name del INPUT
-        // String edad = request.getParameter("edad"); 
-        
-        Persona p = ServicioPersona.getInstancia().getPersona(nombre);
-        request.getSession().setAttribute("resultadoBusq", p);
-        request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+        String correo = request.getParameter("correo"); 
+        String metodo = request.getParameter("metodo"); 
+        if(metodo.equalsIgnoreCase("multiple")){
+            List<Persona> personas = ServicioPersona.getInstancia().damePersonas(nombre);
+            request.getSession().setAttribute("resultadoBusqMultiple", personas);
+            request.getRequestDispatcher("busquedaMultiple.jsp").forward(request, response);              
+        }else{
+            Persona p = ServicioPersona.getInstancia().getPersona(nombre, correo);         
+            request.getSession().setAttribute("resultadoBusq", p);
+            request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+        }   
     }
     
     @Override
