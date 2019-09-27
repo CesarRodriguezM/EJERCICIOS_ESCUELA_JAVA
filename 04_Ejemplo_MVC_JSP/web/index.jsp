@@ -17,7 +17,8 @@
                 <tr><td>Correo:</td>  
                     <td><input type='email' name='correo' id='correo'/></td></tr>
                 <tr><td>Password:</td>  
-                    <td><input type='password' name='pass' id='pass'/></td></tr>                
+                    <td><input type='password' name='pass' id='pass'/></td></tr>       
+            <input type='hidden' name='persona' id='persona' value='<%= ""%>'/>
             </table>
             <input type='submit' value='Enviar'/>             
         </form>
@@ -29,5 +30,6 @@
                     <td><input type='submit' value='Buscar'/>  </td></tr>
             </table>                       
         </form>
+        
     </body>
 </html>

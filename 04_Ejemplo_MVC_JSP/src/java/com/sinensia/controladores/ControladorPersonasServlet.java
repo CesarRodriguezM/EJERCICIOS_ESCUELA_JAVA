@@ -39,9 +39,15 @@ public class ControladorPersonasServlet extends HttpServlet {
         String edad = request.getParameter("edad"); 
         String correo = request.getParameter("correo"); 
         String password = request.getParameter("pass"); 
-        
+        String persona = request.getParameter("persona");
+                
         try {
-            Persona p = ServicioPersona.getInstancia().addPersonas(nombre, edad, correo, password);
+            Persona p = new Persona();
+            if( persona.equals(""))
+                p = ServicioPersona.getInstancia().addPersonas(nombre, edad, correo, password);
+            else
+                p = ServicioPersona.getInstancia().modificarPersonas(nombre, edad, correo, password, persona);
+            
             if (p == null) {
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             } else {
