@@ -48,6 +48,8 @@ public class ControladorPersonasServlet extends HttpServlet {
             else
                 p = ServicioPersona.getInstancia().modificarPersonas(nombre, edad, correo, password, persona);
             
+            request.getSession().setAttribute("resultadoBusq",p);
+            
             if (p == null) {
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             } else {
