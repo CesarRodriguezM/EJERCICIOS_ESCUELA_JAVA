@@ -64,11 +64,11 @@ public class UsersRestController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         //Recicir el JSON como parámetro de FORMulario
-       //String jsonUser = req.getParameter("json");
-        BufferedReader bufRead = req.getReader();        
-         String jsonUser;
-         jsonUser = bufRead.readLine();
-         /*String li
+        //String jsonUser = req.getParameter("json");
+        BufferedReader bufRead = req.getReader();
+        String jsonUser;
+        jsonUser = bufRead.readLine();
+        /*String li
          while (jsonUser != null) {
              jsonUser += bu
          }*/
@@ -82,12 +82,43 @@ public class UsersRestController extends HttpServlet {
                     userObject.getName(),
                     Integer.toString(userObject.getAge()));
             resp.setContentType("application/json;charset=UTF-8");
-            
+
             Gson gson = new Gson();
             String textJson = gson.toJson(userObject);
             resp.getWriter().print(textJson);
         } catch (SQLException ex) {
             Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            super.doDelete(req, resp); //To change body of generated methods, choose Tools | Templates
+            String id = req.getParameter("id");
+
+            userSrv.remove(Integer.parseInt(id));
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String jsonUser = req.getReader().readLine();
+        User userObject = new Gson().fromJson(jsonUser, User.class);
+
+        try {
+            super.doPut(req, resp); //To change body of generated methods, choose Tools | Templates.
+
+            userObject = userSrv.update(userObject);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        resp.setContentType("aplication/json;charset=UTF8-8");
+        resp.getWriter().print(new Gson().toJson(userObject));
+    }
+
 }
